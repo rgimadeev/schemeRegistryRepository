@@ -1,0 +1,15 @@
+{
+  "schemeId": 1,
+  "implementationGuideId": "example implementation guide id",
+  "implementationGuideSynonym": "example implementation guide synonym",
+  "emdId": 123,
+  "semanticsId": 456,
+  "medicalDocumentTypeId": 789,
+  "schemeName": "example scheme name",
+  "schemeEdition": "example scheme edition",
+  "semanticsEdition": "example semantics edition",
+  "gitlabPublicationDate": "2022-01-01",
+  "gitlabLink": "example gitlab link",
+  "validFrom": "2022-01-01",
+  "validTo": "2022-12-31"
+}
