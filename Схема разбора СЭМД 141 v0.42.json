@@ -1,0 +1,1982 @@
+{
+	"title": "Схема разбора СЭМД (141) Льготный рецепт на лекарственный препарат, изделие медицинского назначения и специализированный продукт лечебного питания (CDA) Редакция 4",
+	"type": "object",
+	"implementationGuideOID": "1.2.643.5.1.13.13.15.1.4",
+	"version": "0.42",
+	"properties": {
+		"realmCode": {
+			"title": "Область применения документа",
+			"type": "string",
+			"xpath": "ClinicalDocument/realmCode/@code"
+		},
+		"typeId": {
+			"title": "Тип структуры документа",
+			"type": "object",
+			"properties": {
+				"root": {
+					"title": "root",
+					"type": "string",
+					"xpath": "ClinicalDocument/typeId/@root"
+				},
+				"extension": {
+					"title": "extension",
+					"type": "string",
+					"xpath": "ClinicalDocument/typeId/@extension"
+				}
+			}
+		},
+		"templateId": {
+			"title": "Идентификатор руководства по реализации СЭМД",
+			"type": "string",
+			"xpath": "ClinicalDocument/templateId/@root"
+		},
+		"id": {
+			"title": "Идентификатор документа",
+			"type": "object",
+			"properties": {
+				"root": {
+					"title": "root",
+					"type": "string",
+					"xpath": "ClinicalDocument/id[substring(@root, string-length(@root) - 2)='.51']/@root"
+				},
+				"extension": {
+					"title": "extension",
+					"type": "string",
+					"xpath": "ClinicalDocument/id[substring(@root, string-length(@root) - 2)='.51']/@extension"
+				}
+			}
+		},
+		"code": {
+			"title": "Вид медицинского документа",
+			"type": "object",
+			"properties": {
+				"id": {
+					"title": "Код",
+					"type": "string",
+					"xpath": "ClinicalDocument/code/@code"
+				},
+				"reference": {
+					"title": "Справочник",
+					"type": "string",
+					"xpath": "ClinicalDocument/code/@codeSystem"
+				},
+				"referenceVersion": {
+					"title": "Версия справочника",
+					"type": "string",
+					"xpath": "ClinicalDocument/code/@codeSystemVersion"
+				}
+			}
+		},
+		"title": {
+			"title": "Заголовок документа",
+			"type": "string",
+			"xpath": "ClinicalDocument/title/text()"
+		},
+		"dateWritten": {
+			"title": "Дата создания документа",
+			"type": "string",
+			"xpath": "ClinicalDocument/effectiveTime/@value"
+		},
+		"confidentialityCode": {
+			"title": "Уровень конфиденциальности документа",
+			"type": "object",
+			"properties": {
+				"id": {
+					"title": "Код",
+					"type": "string",
+					"xpath": "ClinicalDocument/confidentialityCode/@code"
+				},
+				"reference": {
+					"title": "Справочник",
+					"type": "string",
+					"xpath": "ClinicalDocument/confidentialityCode/@codeSystem"
+				},
+				"referenceVersion": {
+					"title": "Версия справочника",
+					"type": "string",
+					"xpath": "ClinicalDocument/confidentialityCode/@codeSystemVersion"
+				}
+			}
+		},
+		"languageCode": {
+			"title": "Язык документа",
+			"type": "string",
+			"xpath": "ClinicalDocument/languageCode/@code"
+		},
+		"setId": {
+			"title": "Идентификатор набора версий документа",
+			"type": "object",
+			"properties": {
+				"root": {
+					"title": "root",
+					"type": "string",
+					"xpath": "ClinicalDocument/setId/@root"
+				},
+				"extension": {
+					"title": "extension",
+					"type": "string",
+					"xpath": "ClinicalDocument/setId/@extension"
+				}
+			}
+		},
+		"versionNumber": {
+			"title": "Номер версии документа",
+			"type": "string",
+			"xpath": "ClinicalDocument/versionNumber/@value"
+		},
+		"patient": {
+			"title": "Пациент",
+			"type": "object",
+			"properties": {
+				"id": {
+					"title": "Уникальный идентификатор пациента в МИС",
+					"type": "object",
+					"properties": {
+						"root": {
+							"title": "root",
+							"type": "string",
+							"xpath": "ClinicalDocument/recordTarget/patientRole/id[substring(@root, string-length(@root) - 2)='.10']/@root"
+						},
+						"extension": {
+							"title": "extension",
+							"type": "string",
+							"xpath": "ClinicalDocument/recordTarget/patientRole/id[substring(@root, string-length(@root) - 2)='.10']/@extension"
+						}
+					}
+				},
+				"snils": {
+					"title": "СНИЛС",
+					"type": "object",
+					"pii_type": "10",
+					"properties": {
+						"root": {
+							"title": "root",
+							"type": "string",
+							"xpath": "ClinicalDocument/recordTarget/patientRole/id[@root='1.2.643.100.3']/@root"
+						},
+						"extension": {
+							"title": "extension",
+							"type": "string",
+							"xpath": "ClinicalDocument/recordTarget/patientRole/id[@root='1.2.643.100.3']/@extension"
+						}
+					}
+				},
+				"identityDoc": {
+					"title": "Документ, удостоверяющий личность",
+					"type": "object",
+					"pii_type": "6",
+					"properties": {
+						"identityCardType": {
+							"title": "Тип документа",
+							"type": "object",
+							"properties": {
+								"id": {
+									"title": "Код",
+									"type": "string",
+									"xpath": "ClinicalDocument/recordTarget/patientRole/*[local-name()='IdentityDoc']/*[local-name()='IdentityCardType']/@code"
+								},
+								"reference": {
+									"title": "Справочник",
+									"type": "string",
+									"xpath": "ClinicalDocument/recordTarget/patientRole/*[local-name()='IdentityDoc']/*[local-name()='IdentityCardType']/@codeSystem"
+								},
+								"referenceVersion": {
+									"title": "Версия справочника",
+									"type": "string",
+									"xpath": "ClinicalDocument/recordTarget/patientRole/*[local-name()='IdentityDoc']/*[local-name()='IdentityCardType']/@codeSystemVersion"
+								}
+							}
+						},
+						"series": {
+							"title": "Серия документа",
+							"type": "string",
+							"xpath": "ClinicalDocument/recordTarget/patientRole/*[local-name()='IdentityDoc']/*[local-name()='Series']/text()"
+						},
+						"number": {
+							"title": "Номер документа",
+							"type": "string",
+							"xpath": "ClinicalDocument/recordTarget/patientRole/*[local-name()='IdentityDoc']/*[local-name()='Number']/text()"
+						},
+						"issueOrgName": {
+							"title": "Сведения о том, кем выдан документ",
+							"type": "string",
+							"xpath": "ClinicalDocument/recordTarget/patientRole/*[local-name()='IdentityDoc']/*[local-name()='IssueOrgName']/text()"
+						},
+						"issueOrgCode": {
+							"title": "Сведения о том, кем выдан документ (код подразделения)",
+							"type": "string",
+							"xpath": "ClinicalDocument/recordTarget/patientRole/*[local-name()='IdentityDoc']/*[local-name()='IssueOrgCode']/text()"
+						},
+						"issueDate": {
+							"title": "Дата выдачи документа",
+							"type": "string",
+							"xpath": "ClinicalDocument/recordTarget/patientRole/*[local-name()='IdentityDoc']/*[local-name()='IssueDate']/@value"
+						}
+					}
+				},
+				"insurancePolicy": {
+					"title": "Полис ОМС",
+					"type": "object",
+					"pii_type": "11",
+					"properties": {
+						"insurancePolicyType": {
+							"title": "Тип полиса ОМС",
+							"type": "object",
+							"properties": {
+								"id": {
+									"title": "Код",
+									"type": "string",
+									"xpath": "ClinicalDocument/recordTarget/patientRole/*[local-name()='InsurancePolicy']/*[local-name()='InsurancePolicyType']/@code"
+								},
+								"reference": {
+									"title": "Справочник",
+									"type": "string",
+									"xpath": "ClinicalDocument/recordTarget/patientRole/*[local-name()='InsurancePolicy']/*[local-name()='InsurancePolicyType']/@codeSystem"
+								},
+								"referenceVersion": {
+									"title": "Версия справочника",
+									"type": "string",
+									"xpath": "ClinicalDocument/recordTarget/patientRole/*[local-name()='InsurancePolicy']/*[local-name()='InsurancePolicyType']/@codeSystemVersion"
+								}
+							}
+						},
+						"series": {
+							"title": "Серия полиса ОМС",
+							"type": "string",
+							"xpath": "ClinicalDocument/recordTarget/patientRole/*[local-name()='InsurancePolicy']/*[local-name()='Series']/text()"
+						},
+						"number": {
+							"title": "Номер полиса ОМС",
+							"type": "string",
+							"xpath": "ClinicalDocument/recordTarget/patientRole/*[local-name()='InsurancePolicy']/*[local-name()='Number']/text()"
+						}
+					}
+				},
+				"addr": {
+					"title": "Адрес пациента",
+					"type": "array",
+					"xpath": "ClinicalDocument/recordTarget/patientRole/addr",
+					"items": {
+						"type": "object",
+						"pii_type": "7, 8",
+						"properties": {
+							"addressType": {
+								"title": "Тип адреса",
+								"type": "object",
+								"properties": {
+									"id": {
+										"title": "Код",
+										"type": "string",
+										"xpath": "/*[local-name()='Type']/@code"
+									},
+									"reference": {
+										"title": "Справочник",
+										"type": "string",
+										"xpath": "/*[local-name()='Type']/@codeSystem"
+									},
+									"referenceVersion": {
+										"title": "Версия справочника",
+										"type": "string",
+										"xpath": "/*[local-name()='Type']/@codeSystemVersion"
+									}
+								}
+							},
+							"streetAddressLine": {
+								"title": "Адрес (текстом)",
+								"type": "string",
+								"xpath": "/streetAddressLine/text()"
+							},
+							"stateCode": {
+								"title": "Код субъекта РФ",
+								"type": "object",
+								"properties": {
+									"id": {
+										"title": "Код",
+										"type": "string",
+										"xpath": "/*[local-name()='stateCode']/@code"
+									},
+									"reference": {
+										"title": "Справочник",
+										"type": "string",
+										"xpath": "/*[local-name()='stateCode']/@codeSystem"
+									},
+									"referenceVersion": {
+										"title": "Версия справочника",
+										"type": "string",
+										"xpath": "/*[local-name()='stateCode']/@codeSystemVersion"
+									}
+								}
+							},
+							"postalCode": {
+								"title": "Почтовый индекс",
+								"type": "string",
+								"xpath": "/postalCode/text()"
+							},
+							"fiasAddress": {
+								"title": "Идентификатор адреса по ФИАС",
+								"type": "object",
+								"properties": {
+									"fiasAOGUID": {
+										"title": "Глобальный уникальный идентификатор адресного объекта",
+										"type": "string",
+										"xpath": "/*[local-name()='Address']/*[local-name()='AOGUID']/text()"
+									},
+									"fiasHOUSEGUID": {
+										"title": "Глобальный уникальный идентификатор дома",
+										"type": "string",
+										"xpath": "/*[local-name()='Address']/*[local-name()='HOUSEGUID']/text()"
+									}
+								}
+							}
+						}
+					}
+				},
+				"telecom": {
+					"title": "Контакты пациента",
+					"type": "array",
+					"xpath": "ClinicalDocument/recordTarget/patientRole/telecom",
+					"items": {
+						"type": "object",
+						"properties": {
+							"use": {
+								"title": "use",
+								"type": "string",
+								"xpath": "/@use"
+							},
+							"value": {
+								"title": "value",
+								"type": "string",
+								"xpath": "/@value"
+							}
+						}
+					}
+				},
+				"name": {
+					"title": "ФИО пациента",
+					"type": "object",
+					"pii_type": "1",
+					"properties": {
+						"family": {
+							"title": "Фамилия",
+							"type": "string",
+							"xpath": "ClinicalDocument/recordTarget/patientRole/patient/name/family/text()"
+						},
+						"given": {
+							"title": "Имя",
+							"type": "string",
+							"xpath": "ClinicalDocument/recordTarget/patientRole/patient/name/given/text()"
+						},
+						"patronymic": {
+							"title": "Отчество",
+							"type": "string",
+							"xpath": "ClinicalDocument/recordTarget/patientRole/patient/name/*[local-name()='Patronymic']/text()"
+						}
+					}
+				},
+				"gender": {
+					"title": "Пол пациента",
+					"type": "object",
+					"properties": {
+						"id": {
+							"title": "Код",
+							"type": "string",
+							"xpath": "ClinicalDocument/recordTarget/patientRole/patient/administrativeGenderCode/@code"
+						},
+						"reference": {
+							"title": "Справочник",
+							"type": "string",
+							"xpath": "ClinicalDocument/recordTarget/patientRole/patient/administrativeGenderCode/@codeSystem"
+						},
+						"referenceVersion": {
+							"title": "Версия справочника",
+							"type": "string",
+							"xpath": "ClinicalDocument/recordTarget/patientRole/patient/administrativeGenderCode/@codeSystemVersion"
+						}
+					}
+				},
+				"birthTime": {
+					"title": "Дата рождения пациента",
+					"type": "string",
+					"pii_type": "3",
+					"xpath": "ClinicalDocument/recordTarget/patientRole/patient/birthTime/@value"
+				},
+				"providerOrganization": {
+					"title": "Сведения об организации, оказывающей медицинскую помощь",
+					"type": "object",
+					"properties": {
+						"id": {
+							"title": "Уникальный идентификатор медицинской организации и (при наличии) уникальный идентификатор структурного подразделения",
+							"type": "object",
+							"properties": {
+								"root": {
+									"title": "root",
+									"type": "string",
+									"xpath": "ClinicalDocument/recordTarget/patientRole/providerOrganization/id[not(@root='1.2.643.100.3')][not(@root='1.2.643.5.1.13.2.1.1.1504.101')][not(@root='1.2.643.5.1.13.13.17.1.1')]/@root"
+								},
+								"extension": {
+									"title": "extension",
+									"type": "string",
+									"xpath": "ClinicalDocument/recordTarget/patientRole/providerOrganization/id[not(@root='1.2.643.100.3')][not(@root='1.2.643.5.1.13.2.1.1.1504.101')][not(@root='1.2.643.5.1.13.13.17.1.1')]/@extension"
+								}
+							}
+						},
+						"licence": {
+							"title": "Сведения о лицензии на осуществление медицинской деятельности",
+							"type": "object",
+							"properties": {
+								"root": {
+									"title": "root",
+									"type": "string",
+									"xpath": "ClinicalDocument/recordTarget/patientRole/providerOrganization/id[@root='1.2.643.5.1.13.2.1.1.1504.101']/@root"
+								},
+								"extension": {
+									"title": "extension",
+									"type": "string",
+									"xpath": "ClinicalDocument/recordTarget/patientRole/providerOrganization/id[@root='1.2.643.5.1.13.2.1.1.1504.101']/@extension"
+								}
+							}
+						},
+						"props": {
+							"title": "Реквизиты организации",
+							"type": "object",
+							"properties": {
+								"ogrn": {
+									"title": "Код ОГРН",
+									"type": "string",
+									"xpath": "ClinicalDocument/recordTarget/patientRole/providerOrganization/*[local-name()='Props']/*[local-name()='Ogrn']/text()"
+								},
+								"ogrnip": {
+									"title": "Код ОГРНИП",
+									"type": "string",
+									"xpath": "ClinicalDocument/recordTarget/patientRole/providerOrganization/*[local-name()='Props']/*[local-name()='Ogrnip']/text()"
+								},
+								"okpo": {
+									"title": "Код ОКПО",
+									"type": "string",
+									"xpath": "ClinicalDocument/recordTarget/patientRole/providerOrganization/*[local-name()='Props']/*[local-name()='Okpo']/text()"
+								},
+								"okato": {
+									"title": "Код ОКАТО",
+									"type": "string",
+									"xpath": "ClinicalDocument/recordTarget/patientRole/providerOrganization/*[local-name()='Props']/*[local-name()='Okato']/text()"
+								}
+							}
+						},
+						"name": {
+							"title": "Наименование медицинской организации или ФИО ИП",
+							"type": "string",
+							"xpath": "ClinicalDocument/recordTarget/patientRole/providerOrganization/name/text()"
+						},
+						"telecom": {
+							"title": "Контакты медицинской организации или ИП",
+							"type": "array",
+							"xpath": "ClinicalDocument/recordTarget/patientRole/providerOrganization/telecom",
+							"items": {
+								"type": "object",
+								"properties": {
+									"use": {
+										"title": "use",
+										"type": "string",
+										"xpath": "/@use"
+									},
+									"value": {
+										"title": "value",
+										"type": "string",
+										"xpath": "/@value"
+									}
+								}
+							}
+						},
+						"addr": {
+							"title": "Адрес медицинской организации или ИП",
+							"type": "object",
+							"properties": {
+								"streetAddressLine": {
+									"title": "Адрес (текстом)",
+									"type": "string",
+									"xpath": "ClinicalDocument/recordTarget/patientRole/providerOrganization/addr/streetAddressLine/text()"
+								},
+								"stateCode": {
+									"title": "Код субъекта РФ",
+									"type": "object",
+									"properties": {
+										"id": {
+											"title": "Код",
+											"type": "string",
+											"xpath": "ClinicalDocument/recordTarget/patientRole/providerOrganization/addr/*[local-name()='stateCode']/@code"
+										},
+										"reference": {
+											"title": "Справочник",
+											"type": "string",
+											"xpath": "ClinicalDocument/recordTarget/patientRole/providerOrganization/addr/*[local-name()='stateCode']/@codeSystem"
+										},
+										"referenceVersion": {
+											"title": "Версия справочника",
+											"type": "string",
+											"xpath": "ClinicalDocument/recordTarget/patientRole/providerOrganization/addr/*[local-name()='stateCode']/@codeSystemVersion"
+										}
+									}
+								},
+								"postalCode": {
+									"title": "Почтовый индекс",
+									"type": "string",
+									"xpath": "ClinicalDocument/recordTarget/patientRole/providerOrganization/addr/postalCode/text()"
+								},
+								"fiasAddress": {
+									"title": "Идентификатор адреса по ФИАС",
+									"type": "object",
+									"properties": {
+										"fiasAOGUID": {
+											"title": "Глобальный уникальный идентификатор адресного объекта",
+											"type": "string",
+											"xpath": "ClinicalDocument/recordTarget/patientRole/providerOrganization/addr/*[local-name()='Address']/*[local-name()='AOGUID']/text()"
+										},
+										"fiasHOUSEGUID": {
+											"title": "Глобальный уникальный идентификатор дома",
+											"type": "string",
+											"xpath": "ClinicalDocument/recordTarget/patientRole/providerOrganization/addr/*[local-name()='Address']/*[local-name()='HOUSEGUID']/text()"
+										}
+									}
+								}
+							}
+						}
+					}
+				}
+			}
+		},
+		"author": {
+			"title": "Сведения об авторе документа",
+			"type": "object",
+			"properties": {
+				"id": {
+					"title": "Уникальный идентификатор автора в МИС",
+					"type": "object",
+					"properties": {
+						"root": {
+							"title": "root",
+							"type": "string",
+							"xpath": "ClinicalDocument/author/assignedAuthor/id[substring(@root, string-length(@root) - 2)='.70']/@root"
+						},
+						"extension": {
+							"title": "extension",
+							"type": "string",
+							"xpath": "ClinicalDocument/author/assignedAuthor/id[substring(@root, string-length(@root) - 2)='.70']/@extension"
+						}
+					}
+				},
+				"snils": {
+					"title": "СНИЛС автора",
+					"type": "object",
+					"properties": {
+						"root": {
+							"title": "root",
+							"type": "string",
+							"xpath": "ClinicalDocument/author/assignedAuthor/id[@root='1.2.643.100.3']/@root"
+						},
+						"extension": {
+							"title": "extension",
+							"type": "string",
+							"xpath": "ClinicalDocument/author/assignedAuthor/id[@root='1.2.643.100.3']/@extension"
+						}
+					}
+				},
+				"code": {
+					"title": "Код должности автора",
+					"type": "object",
+					"properties": {
+						"id": {
+							"title": "Код",
+							"type": "string",
+							"xpath": "ClinicalDocument/author/assignedAuthor/code/@code"
+						},
+						"reference": {
+							"title": "Справочник",
+							"type": "string",
+							"xpath": "ClinicalDocument/author/assignedAuthor/code/@codeSystem"
+						},
+						"referenceVersion": {
+							"title": "Версия справочника",
+							"type": "string",
+							"xpath": "ClinicalDocument/author/assignedAuthor/code/@codeSystemVersion"
+						}
+					}
+				},
+				"addr": {
+					"title": "Адрес места работы автора документа",
+					"type": "object",
+					"properties": {
+						"streetAddressLine": {
+							"title": "Адрес (текстом)",
+							"type": "string",
+							"xpath": "ClinicalDocument/author/assignedAuthor/addr/streetAddressLine/text()"
+						},
+						"stateCode": {
+							"title": "Код субъекта РФ",
+							"type": "object",
+							"properties": {
+								"id": {
+									"title": "Код",
+									"type": "string",
+									"xpath": "ClinicalDocument/author/assignedAuthor/addr/*[local-name()='stateCode']/@code"
+								},
+								"reference": {
+									"title": "Справочник",
+									"type": "string",
+									"xpath": "ClinicalDocument/author/assignedAuthor/addr/*[local-name()='stateCode']/@codeSystem"
+								},
+								"referenceVersion": {
+									"title": "Версия справочника",
+									"type": "string",
+									"xpath": "ClinicalDocument/author/assignedAuthor/addr/*[local-name()='stateCode']/@codeSystemVersion"
+								}
+							}
+						},
+						"postalCode": {
+							"title": "Почтовый индекс",
+							"type": "string",
+							"xpath": "ClinicalDocument/author/assignedAuthor/addr/postalCode/text()"
+						},
+						"fiasAddress": {
+							"title": "Идентификатор адреса по ФИАС",
+							"type": "object",
+							"properties": {
+								"fiasAOGUID": {
+									"title": "Глобальный уникальный идентификатор адресного объекта",
+									"type": "string",
+									"xpath": "ClinicalDocument/author/assignedAuthor/addr/*[local-name()='Address']/*[local-name()='AOGUID']/text()"
+								},
+								"fiasHOUSEGUID": {
+									"title": "Глобальный уникальный идентификатор дома",
+									"type": "string",
+									"xpath": "ClinicalDocument/author/assignedAuthor/addr/*[local-name()='Address']/*[local-name()='HOUSEGUID']/text()"
+								}
+							}
+						}
+					}
+				},
+				"telecom": {
+					"title": "Контакты автора",
+					"type": "array",
+					"xpath": "ClinicalDocument/author/assignedAuthor/telecom",
+					"items": {
+						"type": "object",
+						"properties": {
+							"use": {
+								"title": "use",
+								"type": "string",
+								"xpath": "/@use"
+							},
+							"value": {
+								"title": "value",
+								"type": "string",
+								"xpath": "/@value"
+							}
+						}
+					}
+				},
+				"name": {
+					"title": "ФИО автора",
+					"type": "object",
+					"properties": {
+						"family": {
+							"title": "Фамилия",
+							"type": "string",
+							"xpath": "ClinicalDocument/author/assignedAuthor/assignedPerson/name/family/text()"
+						},
+						"given": {
+							"title": "Имя",
+							"type": "string",
+							"xpath": "ClinicalDocument/author/assignedAuthor/assignedPerson/name/given/text()"
+						},
+						"patronymic": {
+							"title": "Отчество",
+							"type": "string",
+							"xpath": "ClinicalDocument/author/assignedAuthor/assignedPerson/name/*[local-name()='Patronymic']/text()"
+						}
+					}
+				},
+				"representedOrganization": {
+					"title": "Сведения о медицинской организации, где работает автор",
+					"type": "object",
+					"properties": {
+						"id": {
+							"title": "Уникальный идентификатор медицинской организации и (при наличии) уникальный идентификатор структурного подразделения",
+							"type": "object",
+							"properties": {
+								"root": {
+									"title": "root",
+									"type": "string",
+									"xpath": "ClinicalDocument/author/assignedAuthor/representedOrganization/id[not(@root='1.2.643.100.3')][not(@root='1.2.643.5.1.13.2.1.1.1504.101')][not(@root='1.2.643.5.1.13.13.17.1.1')]/@root"
+								},
+								"extension": {
+									"title": "extension",
+									"type": "string",
+									"xpath": "ClinicalDocument/author/assignedAuthor/representedOrganization/id[not(@root='1.2.643.100.3')][not(@root='1.2.643.5.1.13.2.1.1.1504.101')][not(@root='1.2.643.5.1.13.13.17.1.1')]/@extension"
+								}
+							}
+						},
+						"name": {
+							"title": "Наименование медицинской организации или ФИО ИП",
+							"type": "string",
+							"xpath": "ClinicalDocument/author/assignedAuthor/representedOrganization/name/text()"
+						},
+						"telecom": {
+							"title": "Контакты медицинской организации или ИП",
+							"type": "array",
+							"xpath": "ClinicalDocument/author/assignedAuthor/representedOrganization/telecom",
+							"items": {
+								"type": "object",
+								"properties": {
+									"use": {
+										"title": "use",
+										"type": "string",
+										"xpath": "/@use"
+									},
+									"value": {
+										"title": "value",
+										"type": "string",
+										"xpath": "/@value"
+									}
+								}
+							}
+						},
+						"addr": {
+							"title": "Адрес медицинской организации или ИП",
+							"type": "object",
+							"properties": {
+								"streetAddressLine": {
+									"title": "Адрес (текстом)",
+									"type": "string",
+									"xpath": "ClinicalDocument/author/assignedAuthor/representedOrganization/addr/streetAddressLine/text()"
+								},
+								"stateCode": {
+									"title": "Код субъекта РФ",
+									"type": "object",
+									"properties": {
+										"id": {
+											"title": "Код",
+											"type": "string",
+											"xpath": "ClinicalDocument/author/assignedAuthor/representedOrganization/addr/*[local-name()='stateCode']/@code"
+										},
+										"reference": {
+											"title": "Справочник",
+											"type": "string",
+											"xpath": "ClinicalDocument/author/assignedAuthor/representedOrganization/addr/*[local-name()='stateCode']/@codeSystem"
+										},
+										"referenceVersion": {
+											"title": "Версия справочника",
+											"type": "string",
+											"xpath": "ClinicalDocument/author/assignedAuthor/representedOrganization/addr/*[local-name()='stateCode']/@codeSystemVersion"
+										}
+									}
+								},
+								"postalCode": {
+									"title": "Почтовый индекс",
+									"type": "string",
+									"xpath": "ClinicalDocument/author/assignedAuthor/representedOrganization/addr/postalCode/text()"
+								},
+								"fiasAddress": {
+									"title": "Идентификатор адреса по ФИАС",
+									"type": "object",
+									"properties": {
+										"fiasAOGUID": {
+											"title": "Глобальный уникальный идентификатор адресного объекта",
+											"type": "string",
+											"xpath": "ClinicalDocument/author/assignedAuthor/representedOrganization/addr/*[local-name()='Address']/*[local-name()='AOGUID']/text()"
+										},
+										"fiasHOUSEGUID": {
+											"title": "Глобальный уникальный идентификатор дома",
+											"type": "string",
+											"xpath": "ClinicalDocument/author/assignedAuthor/representedOrganization/addr/*[local-name()='Address']/*[local-name()='HOUSEGUID']/text()"
+										}
+									}
+								}
+							}
+						}
+					}
+				}
+			}
+		},
+		"representedCustodianOrganization": {
+			"title": "Сведения об организации-владельце документа",
+			"type": "object",
+			"properties": {
+				"id": {
+					"title": "Уникальный идентификатор медицинской организации и (при наличии) уникальный идентификатор структурного подразделения",
+					"type": "object",
+					"properties": {
+						"root": {
+							"title": "root",
+							"type": "string",
+							"xpath": "ClinicalDocument/custodian/assignedCustodian/representedCustodianOrganization/id[not(@root='1.2.643.100.3')][not(@root='1.2.643.5.1.13.2.1.1.1504.101')][not(@root='1.2.643.5.1.13.13.17.1.1')]/@root"
+						},
+						"extension": {
+							"title": "extension",
+							"type": "string",
+							"xpath": "ClinicalDocument/custodian/assignedCustodian/representedCustodianOrganization/id[not(@root='1.2.643.100.3')][not(@root='1.2.643.5.1.13.2.1.1.1504.101')][not(@root='1.2.643.5.1.13.13.17.1.1')]/@extension"
+						}
+					}
+				},
+				"name": {
+					"title": "Наименование организации или ФИО ИП",
+					"type": "string",
+					"xpath": "ClinicalDocument/custodian/assignedCustodian/representedCustodianOrganization/name/text()"
+				},
+				"telecom": {
+					"title": "Телефон медицинской организации или ИП",
+					"type": "object",
+					"properties": {
+						"use": {
+							"title": "use",
+							"type": "string",
+							"xpath": "ClinicalDocument/custodian/assignedCustodian/representedCustodianOrganization/telecom/@use"
+						},
+						"value": {
+							"title": "value",
+							"type": "string",
+							"xpath": "ClinicalDocument/custodian/assignedCustodian/representedCustodianOrganization/telecom/@value"
+						}
+					}
+				},
+				"addr": {
+					"title": "Адрес медицинской организации или ИП",
+					"type": "object",
+					"properties": {
+						"streetAddressLine": {
+							"title": "Адрес (текстом)",
+							"type": "string",
+							"xpath": "ClinicalDocument/custodian/assignedCustodian/representedCustodianOrganization/addr/streetAddressLine/text()"
+						},
+						"stateCode": {
+							"title": "Код субъекта РФ",
+							"type": "object",
+							"properties": {
+								"id": {
+									"title": "Код",
+									"type": "string",
+									"xpath": "ClinicalDocument/custodian/assignedCustodian/representedCustodianOrganization/addr/*[local-name()='stateCode']/@code"
+								},
+								"reference": {
+									"title": "Справочник",
+									"type": "string",
+									"xpath": "ClinicalDocument/custodian/assignedCustodian/representedCustodianOrganization/addr/*[local-name()='stateCode']/@codeSystem"
+								},
+								"referenceVersion": {
+									"title": "Версия справочника",
+									"type": "string",
+									"xpath": "ClinicalDocument/custodian/assignedCustodian/representedCustodianOrganization/addr/*[local-name()='stateCode']/@codeSystemVersion"
+								}
+							}
+						},
+						"postalCode": {
+							"title": "Почтовый индекс",
+							"type": "string",
+							"xpath": "ClinicalDocument/custodian/assignedCustodian/representedCustodianOrganization/addr/postalCode/text()"
+						},
+						"fiasAddress": {
+							"title": "Идентификатор адреса по ФИАС",
+							"type": "object",
+							"properties": {
+								"fiasAOGUID": {
+									"title": "Глобальный уникальный идентификатор адресного объекта",
+									"type": "string",
+									"xpath": "ClinicalDocument/custodian/assignedCustodian/representedCustodianOrganization/addr/*[local-name()='Address']/*[local-name()='AOGUID']/text()"
+								},
+								"fiasHOUSEGUID": {
+									"title": "Глобальный уникальный идентификатор дома",
+									"type": "string",
+									"xpath": "ClinicalDocument/custodian/assignedCustodian/representedCustodianOrganization/addr/*[local-name()='Address']/*[local-name()='HOUSEGUID']/text()"
+								}
+							}
+						}
+					}
+				}
+			}
+		},
+		"receivedOrganizationREMD": {
+			"title": "Сведения об организации-получателе документа (РЭМД)",
+			"type": "object",
+			"properties": {
+				"id": {
+					"title": "Уникальный идентификатор получающей организации",
+					"type": "string",
+					"xpath": "ClinicalDocument/informationRecipient[intendedRecipient/receivedOrganization/id/@root='1.2.643.5.1.13']/intendedRecipient/receivedOrganization/id[@root='1.2.643.5.1.13']/@root"
+				},
+				"name": {
+					"title": "Наименование получающей организации",
+					"type": "string",
+					"xpath": "ClinicalDocument/informationRecipient[intendedRecipient/receivedOrganization/id/@root='1.2.643.5.1.13']/intendedRecipient/receivedOrganization/name/text()"
+				}
+			}
+		},
+		"receivedOrganization": {
+			"title": "Сведения об организации-получателе документа",
+			"type": "array",
+			"xpath": "ClinicalDocument/informationRecipient[not(intendedRecipient/receivedOrganization/id/@root='1.2.643.5.1.13')]/intendedRecipient/receivedOrganization",
+			"items": {
+				"type": "object",
+				"properties": {
+					"id": {
+						"title": "Уникальный идентификатор получающей организации и (при наличии) уникальный идентификатор структурного подразделения",
+						"type": "object",
+						"properties": {
+							"root": {
+								"title": "root",
+								"type": "string",
+								"xpath": "/id/@root"
+							},
+							"extension": {
+								"title": "extension",
+								"type": "string",
+								"xpath": "/id/@extension"
+							}
+						}
+					},
+					"name": {
+						"title": "Наименование получающей организации",
+						"type": "string",
+						"xpath": "/name/text()"
+					}
+				}
+			}
+		},
+		"legalAuthenticator": {
+			"title": "Сведения о лице, придавшем юридическую силу документу",
+			"type": "object",
+			"properties": {
+				"id": {
+					"title": "Уникальный идентификатор лица, придавшего юридическую силу документу, в МИС",
+					"type": "object",
+					"properties": {
+						"root": {
+							"title": "root",
+							"type": "string",
+							"xpath": "ClinicalDocument/legalAuthenticator/assignedEntity/id[substring(@root, string-length(@root) - 2)='.70']/@root"
+						},
+						"extension": {
+							"title": "extension",
+							"type": "string",
+							"xpath": "ClinicalDocument/legalAuthenticator/assignedEntity/id[substring(@root, string-length(@root) - 2)='.70']/@extension"
+						}
+					}
+				},
+				"snils": {
+					"title": "СНИЛС лица, придавшего юридическую силу документу",
+					"type": "object",
+					"properties": {
+						"root": {
+							"title": "root",
+							"type": "string",
+							"xpath": "ClinicalDocument/legalAuthenticator/assignedEntity/id[@root='1.2.643.100.3']/@root"
+						},
+						"extension": {
+							"title": "extension",
+							"type": "string",
+							"xpath": "ClinicalDocument/legalAuthenticator/assignedEntity/id[@root='1.2.643.100.3']/@extension"
+						}
+					}
+				},
+				"positionCodeOfThePersonWhoGaveLegalEffectToTheDocument": {
+					"title": "Код должности лица, придавшего юридическую силу документу",
+					"type": "object",
+					"properties": {
+						"id": {
+							"title": "Код",
+							"type": "string",
+							"xpath": "ClinicalDocument/legalAuthenticator/assignedEntity/code/@code"
+						},
+						"reference": {
+							"title": "Справочник",
+							"type": "string",
+							"xpath": "ClinicalDocument/legalAuthenticator/assignedEntity/code/@codeSystem"
+						},
+						"referenceVersion": {
+							"title": "Версия справочника",
+							"type": "string",
+							"xpath": "ClinicalDocument/legalAuthenticator/assignedEntity/code/@codeSystemVersion"
+						}
+					}
+				},
+				"addr": {
+					"title": "Адрес места работы лица, придавшего юридическую силу документу",
+					"type": "object",
+					"properties": {
+						"streetAddressLine": {
+							"title": "Адрес (текстом)",
+							"type": "string",
+							"xpath": "ClinicalDocument/legalAuthenticator/assignedEntity/addr/streetAddressLine/text()"
+						},
+						"stateCode": {
+							"title": "Код субъекта РФ",
+							"type": "object",
+							"properties": {
+								"id": {
+									"title": "Код",
+									"type": "string",
+									"xpath": "ClinicalDocument/legalAuthenticator/assignedEntity/addr/*[local-name()='stateCode']/@code"
+								},
+								"reference": {
+									"title": "Справочник",
+									"type": "string",
+									"xpath": "ClinicalDocument/legalAuthenticator/assignedEntity/addr/*[local-name()='stateCode']/@codeSystem"
+								},
+								"referenceVersion": {
+									"title": "Версия справочника",
+									"type": "string",
+									"xpath": "ClinicalDocument/legalAuthenticator/assignedEntity/addr/*[local-name()='stateCode']/@codeSystemVersion"
+								}
+							}
+						},
+						"postalCode": {
+							"title": "Почтовый индекс",
+							"type": "string",
+							"xpath": "ClinicalDocument/legalAuthenticator/assignedEntity/addr/postalCode/text()"
+						},
+						"fiasAddress": {
+							"title": "Идентификатор адреса по ФИАС",
+							"type": "object",
+							"properties": {
+								"fiasAOGUID": {
+									"title": "Глобальный уникальный идентификатор адресного объекта",
+									"type": "string",
+									"xpath": "ClinicalDocument/legalAuthenticator/assignedEntity/addr/*[local-name()='Address']/*[local-name()='AOGUID']/text()"
+								},
+								"fiasHOUSEGUID": {
+									"title": "Глобальный уникальный идентификатор дома",
+									"type": "string",
+									"xpath": "ClinicalDocument/legalAuthenticator/assignedEntity/addr/*[local-name()='Address']/*[local-name()='HOUSEGUID']/text()"
+								}
+							}
+						}
+					}
+				},
+				"telecom": {
+					"title": "Контакты лица, придавшего юридическую силу документу",
+					"type": "array",
+					"xpath": "ClinicalDocument/legalAuthenticator/assignedEntity/telecom",
+					"items": {
+						"type": "object",
+						"properties": {
+							"use": {
+								"title": "use",
+								"type": "string",
+								"xpath": "/@use"
+							},
+							"value": {
+								"title": "value",
+								"type": "string",
+								"xpath": "/@value"
+							}
+						}
+					}
+				},
+				"name": {
+					"title": "ФИО лица, придавшего юридическую силу документу",
+					"type": "object",
+					"properties": {
+						"family": {
+							"title": "Фамилия",
+							"type": "string",
+							"xpath": "ClinicalDocument/legalAuthenticator/assignedEntity/assignedPerson/name/family/text()"
+						},
+						"given": {
+							"title": "Имя",
+							"type": "string",
+							"xpath": "ClinicalDocument/legalAuthenticator/assignedEntity/assignedPerson/name/given/text()"
+						},
+						"patronymic": {
+							"title": "Отчество",
+							"type": "string",
+							"xpath": "ClinicalDocument/legalAuthenticator/assignedEntity/assignedPerson/name/*[local-name()='Patronymic']/text()"
+						}
+					}
+				},
+				"representedOrganization": {
+					"title": "Сведения о медицинской организации, где работает лицо, придавшее юридическую силу документу",
+					"type": "object",
+					"properties": {
+						"id": {
+							"title": "Уникальный идентификатор медицинской организации и (при наличии) уникальный идентификатор структурного подразделения",
+							"type": "object",
+							"properties": {
+								"root": {
+									"title": "root",
+									"type": "string",
+									"xpath": "ClinicalDocument/legalAuthenticator/assignedEntity/representedOrganization/id[not(@root='1.2.643.100.3')][not(@root='1.2.643.5.1.13.2.1.1.1504.101')][not(@root='1.2.643.5.1.13.13.17.1.1')]/@root"
+								},
+								"extension": {
+									"title": "extension",
+									"type": "string",
+									"xpath": "ClinicalDocument/legalAuthenticator/assignedEntity/representedOrganization/id[not(@root='1.2.643.100.3')][not(@root='1.2.643.5.1.13.2.1.1.1504.101')][not(@root='1.2.643.5.1.13.13.17.1.1')]/@extension"
+								}
+							}
+						},
+						"name": {
+							"title": "Наименование медицинской организации или ФИО ИП",
+							"type": "string",
+							"xpath": "ClinicalDocument/legalAuthenticator/assignedEntity/representedOrganization/name/text()"
+						},
+						"telecom": {
+							"title": "Контакты медицинской организации или ИП",
+							"type": "array",
+							"xpath": "ClinicalDocument/legalAuthenticator/assignedEntity/representedOrganization/telecom",
+							"items": {
+								"type": "object",
+								"properties": {
+									"use": {
+										"title": "use",
+										"type": "string",
+										"xpath": "/@use"
+									},
+									"value": {
+										"title": "value",
+										"type": "string",
+										"xpath": "/@value"
+									}
+								}
+							}
+						},
+						"addr": {
+							"title": "Адрес медицинской организации или ИП",
+							"type": "object",
+							"properties": {
+								"streetAddressLine": {
+									"title": "Адрес (текстом)",
+									"type": "string",
+									"xpath": "ClinicalDocument/legalAuthenticator/assignedEntity/representedOrganization/addr/streetAddressLine/text()"
+								},
+								"stateCode": {
+									"title": "Код субъекта РФ",
+									"type": "object",
+									"properties": {
+										"id": {
+											"title": "Код",
+											"type": "string",
+											"xpath": "ClinicalDocument/legalAuthenticator/assignedEntity/representedOrganization/addr/*[local-name()='stateCode']/@code"
+										},
+										"reference": {
+											"title": "Справочник",
+											"type": "string",
+											"xpath": "ClinicalDocument/legalAuthenticator/assignedEntity/representedOrganization/addr/*[local-name()='stateCode']/@codeSystem"
+										},
+										"referenceVersion": {
+											"title": "Версия справочника",
+											"type": "string",
+											"xpath": "ClinicalDocument/legalAuthenticator/assignedEntity/representedOrganization/addr/*[local-name()='stateCode']/@codeSystemVersion"
+										}
+									}
+								},
+								"postalCode": {
+									"title": "Почтовый индекс",
+									"type": "string",
+									"xpath": "ClinicalDocument/legalAuthenticator/assignedEntity/representedOrganization/addr/postalCode/text()"
+								},
+								"fiasAddress": {
+									"title": "Идентификатор адреса по ФИАС",
+									"type": "object",
+									"properties": {
+										"fiasAOGUID": {
+											"title": "Глобальный уникальный идентификатор адресного объекта",
+											"type": "string",
+											"xpath": "ClinicalDocument/legalAuthenticator/assignedEntity/representedOrganization/addr/*[local-name()='Address']/*[local-name()='AOGUID']/text()"
+										},
+										"fiasHOUSEGUID": {
+											"title": "Глобальный уникальный идентификатор дома",
+											"type": "string",
+											"xpath": "ClinicalDocument/legalAuthenticator/assignedEntity/representedOrganization/addr/*[local-name()='Address']/*[local-name()='HOUSEGUID']/text()"
+										}
+									}
+								}
+							}
+						}
+					}
+				}
+			}
+		},
+		"medService": {
+			"title": "Сведения о документируемом событии",
+			"type": "object",
+			"properties": {
+				"eventType": {
+					"title": "Тип документируемого события",
+					"type": "object",
+					"properties": {
+						"id": {
+							"title": "Код",
+							"type": "string",
+							"xpath": "ClinicalDocument/documentationOf/serviceEvent/code/@code"
+						},
+						"reference": {
+							"title": "Справочник",
+							"type": "string",
+							"xpath": "ClinicalDocument/documentationOf/serviceEvent/code/@codeSystem"
+						},
+						"referenceVersion": {
+							"title": "Версия справочника",
+							"type": "string",
+							"xpath": "ClinicalDocument/documentationOf/serviceEvent/code/@codeSystemVersion"
+						}
+					}
+				},
+				"dateWritten": {
+					"title": "Дата выдачи медицинского документа",
+					"type": "string",
+					"xpath": "ClinicalDocument/documentationOf/serviceEvent/effectiveTime/@value"
+				},
+				"serviceForm": {
+					"title": "Форма оказания медицинской помощи",
+					"type": "object",
+					"properties": {
+						"id": {
+							"title": "Код",
+							"type": "string",
+							"xpath": "ClinicalDocument/documentationOf/serviceEvent/*[local-name()='serviceForm']/@code"
+						},
+						"reference": {
+							"title": "Справочник",
+							"type": "string",
+							"xpath": "ClinicalDocument/documentationOf/serviceEvent/*[local-name()='serviceForm']/@codeSystem"
+						},
+						"referenceVersion": {
+							"title": "Версия справочника",
+							"type": "string",
+							"xpath": "ClinicalDocument/documentationOf/serviceEvent/*[local-name()='serviceForm']/@codeSystemVersion"
+						}
+					}
+				},
+				"serviceType": {
+					"title": "Вид медицинской помощи",
+					"type": "object",
+					"properties": {
+						"id": {
+							"title": "Код",
+							"type": "string",
+							"xpath": "ClinicalDocument/documentationOf/serviceEvent/*[local-name()='serviceType']/@code"
+						},
+						"reference": {
+							"title": "Справочник",
+							"type": "string",
+							"xpath": "ClinicalDocument/documentationOf/serviceEvent/*[local-name()='serviceType']/@codeSystem"
+						},
+						"referenceVersion": {
+							"title": "Версия справочника",
+							"type": "string",
+							"xpath": "ClinicalDocument/documentationOf/serviceEvent/*[local-name()='serviceType']/@codeSystemVersion"
+						}
+					}
+				},
+				"serviceCond": {
+					"title": "Условия оказания медицинской помощи",
+					"type": "object",
+					"properties": {
+						"id": {
+							"title": "Код",
+							"type": "string",
+							"xpath": "ClinicalDocument/documentationOf/serviceEvent/*[local-name()='serviceCond']/@code"
+						},
+						"reference": {
+							"title": "Справочник",
+							"type": "string",
+							"xpath": "ClinicalDocument/documentationOf/serviceEvent/*[local-name()='serviceCond']/@codeSystem"
+						},
+						"referenceVersion": {
+							"title": "Версия справочника",
+							"type": "string",
+							"xpath": "ClinicalDocument/documentationOf/serviceEvent/*[local-name()='serviceCond']/@codeSystemVersion"
+						}
+					}
+				}
+			}
+		},
+		"medicalCase": {
+			"title": "Сведения о случае оказания медицинской помощи",
+			"type": "object",
+			"properties": {
+				"misID": {
+					"title": "Уникальный идентификатор случая оказания медицинской помощи в МИС",
+					"type": "object",
+					"properties": {
+						"root": {
+							"title": "root",
+							"type": "string",
+							"xpath": "ClinicalDocument/componentOf/encompassingEncounter/id[substring(@root, string-length(@root) - 2)='.15']/@root"
+						},
+						"extension": {
+							"title": "extension",
+							"type": "string",
+							"xpath": "ClinicalDocument/componentOf/encompassingEncounter/id[substring(@root, string-length(@root) - 2)='.15']/@extension"
+						}
+					}
+				},
+				"ehrID": {
+					"title": "Уникальный идентификатор случая оказания медицинской помощи (номер истории болезни, амбулаторной карты)",
+					"type": "object",
+					"properties": {
+						"root": {
+							"title": "root",
+							"type": "string",
+							"xpath": "ClinicalDocument/componentOf/encompassingEncounter/id[substring(@root, string-length(@root) - 2)='.16' or substring(@root, string-length(@root) - 2)='.17']/@root"
+						},
+						"extension": {
+							"title": "extension",
+							"type": "string",
+							"xpath": "ClinicalDocument/componentOf/encompassingEncounter/id[substring(@root, string-length(@root) - 2)='.16' or substring(@root, string-length(@root) - 2)='.17']/@extension"
+						}
+					}
+				},
+				"ehrType": {
+					"title": "Тип медицинской карты",
+					"type": "object",
+					"properties": {
+						"id": {
+							"title": "Код",
+							"type": "string",
+							"xpath": "ClinicalDocument/componentOf/encompassingEncounter/code/@code"
+						},
+						"reference": {
+							"title": "Справочник",
+							"type": "string",
+							"xpath": "ClinicalDocument/componentOf/encompassingEncounter/code/@codeSystem"
+						},
+						"referenceVersion": {
+							"title": "Версия справочника",
+							"type": "string",
+							"xpath": "ClinicalDocument/componentOf/encompassingEncounter/code/@codeSystemVersion"
+						}
+					}
+				},
+				"docType": {
+					"title": "Вид медицинской карты",
+					"type": "object",
+					"properties": {
+						"id": {
+							"title": "Код",
+							"type": "string",
+							"xpath": "ClinicalDocument/componentOf/encompassingEncounter/*[local-name()='DocType']/@code"
+						},
+						"reference": {
+							"title": "Справочник",
+							"type": "string",
+							"xpath": "ClinicalDocument/componentOf/encompassingEncounter/*[local-name()='DocType']/@codeSystem"
+						},
+						"referenceVersion": {
+							"title": "Версия справочника",
+							"type": "string",
+							"xpath": "ClinicalDocument/componentOf/encompassingEncounter/*[local-name()='DocType']/@codeSystemVersion"
+						}
+					}
+				},
+				"serviceDate": {
+					"title": "Даты случая",
+					"type": "object",
+					"properties": {
+						"dateStart": {
+							"title": "Дата начала случая",
+							"type": "string",
+							"xpath": "ClinicalDocument/componentOf/encompassingEncounter/effectiveTime/low/@value"
+						},
+						"dateFinish": {
+							"title": "Дата окончания случая",
+							"type": "string",
+							"xpath": "ClinicalDocument/componentOf/encompassingEncounter/effectiveTime/high/@value"
+						}
+					}
+				}
+			}
+		},
+		"benefitRecipe": {
+			"title": "Льготный рецепт",
+			"type": "object",
+			"properties": {
+				"priorityOfRecipeExecution": {
+					"title": "Приоритет исполнения рецепта",
+					"type": "object",
+					"properties": {
+						"id": {
+							"title": "Код",
+							"type": "string",
+							"xpath": "ClinicalDocument/component/structuredBody/component[section/code/@code='DOCINFO']/section/entry[observation/code/@code='6000']/observation/value/@code"
+						},
+						"reference": {
+							"title": "Справочник",
+							"type": "string",
+							"xpath": "ClinicalDocument/component/structuredBody/component[section/code/@code='DOCINFO']/section/entry[observation/code/@code='6000']/observation/value/@codeSystem"
+						},
+						"referenceVersion": {
+							"title": "Версия справочника",
+							"type": "string",
+							"xpath": "ClinicalDocument/component/structuredBody/component[section/code/@code='DOCINFO']/section/entry[observation/code/@code='6000']/observation/value/@codeSystemVersion"
+						}
+					}
+				},
+				"recipeSeries": {
+					"title": "Серия рецепта",
+					"type": "string",
+					"xpath": "ClinicalDocument/component/structuredBody/component[section/code/@code='DOCINFO']/section/entry[observation/code/@code='6001']/observation/value/text()"
+				},
+				"recipeNumber": {
+					"title": "Номер рецепта",
+					"type": "string",
+					"xpath": "ClinicalDocument/component/structuredBody/component[section/code/@code='DOCINFO']/section/entry[observation/code/@code='6002']/observation/value/text()"
+				},
+				"expirationDateOfThePrescription": {
+					"title": "Дата окончания действия рецепта",
+					"type": "string",
+					"xpath": "ClinicalDocument/component/structuredBody/component[section/code/@code='DOCINFO']/section/entry[observation/code/@code='6004']/observation/effectiveTime/@value"
+				},
+				"prescriptionValidityPeriod": {
+					"title": "Срок действия рецепта",
+					"type": "object",
+					"properties": {
+						"id": {
+							"title": "Код",
+							"type": "string",
+							"xpath": "ClinicalDocument/component/structuredBody/component[section/code/@code='DOCINFO']/section/entry[observation/code/@code='6004']/observation/value/@code"
+						},
+						"reference": {
+							"title": "Справочник",
+							"type": "string",
+							"xpath": "ClinicalDocument/component/structuredBody/component[section/code/@code='DOCINFO']/section/entry[observation/code/@code='6004']/observation/value/@codeSystem"
+						},
+						"referenceVersion": {
+							"title": "Версия справочника",
+							"type": "string",
+							"xpath": "ClinicalDocument/component/structuredBody/component[section/code/@code='DOCINFO']/section/entry[observation/code/@code='6004']/observation/value/@codeSystemVersion"
+						}
+					}
+				},
+				"forSpecialPurpose": {
+					"title": "По специальному назначению",
+					"type": "string",
+					"xpath": "ClinicalDocument/component/structuredBody/component[section/code/@code='DOCINFO']/section/entry[observation/code/@code='6006']/observation/value/@value"
+				},
+				"thePresenceOfChronicDiseases": {
+					"title": "Наличие хронических заболеваний",
+					"type": "string",
+					"xpath": "ClinicalDocument/component/structuredBody/component[section/code/@code='DOCINFO']/section/entry[observation/code/@code='11001']/observation/value/@value"
+				},
+				"diagnosis": {
+					"title": "Диагноз",
+					"type": "object",
+					"properties": {
+						"id": {
+							"title": "Код",
+							"type": "string",
+							"xpath": "ClinicalDocument/component/structuredBody/component[section/code/@code='DOCINFO']/section/entry[observation/code/@code='809']/observation/value/@code"
+						},
+						"reference": {
+							"title": "Справочник",
+							"type": "string",
+							"xpath": "ClinicalDocument/component/structuredBody/component[section/code/@code='DOCINFO']/section/entry[observation/code/@code='809']/observation/value/@codeSystem"
+						},
+						"referenceVersion": {
+							"title": "Версия справочника",
+							"type": "string",
+							"xpath": "ClinicalDocument/component/structuredBody/component[section/code/@code='DOCINFO']/section/entry[observation/code/@code='809']/observation/value/@codeSystemVersion"
+						}
+					}
+				},
+				"benefits": {
+					"title": "Льготы",
+					"type": "object",
+					"properties": {
+						"preferentialCategories": {
+							"title": "Льготные категории",
+							"type": "array",
+							"xpath": "ClinicalDocument/component/structuredBody/component[section/code/@code='BENEFITS']/section/entry[observation/code/@code='811']",
+							"items": {
+								"type": "object",
+								"properties": {
+									"id": {
+										"title": "Код",
+										"type": "string",
+										"xpath": "/observation/value/@code"
+									},
+									"reference": {
+										"title": "Справочник",
+										"type": "string",
+										"xpath": "/observation/value/@codeSystem"
+									},
+									"referenceVersion": {
+										"title": "Версия справочника",
+										"type": "string",
+										"xpath": "/observation/value/@codeSystemVersion"
+									}
+								}
+							}
+						},
+						"benefitAmount_code": {
+							"title": "Размер льготы (код)",
+							"type": "object",
+							"properties": {
+								"id": {
+									"title": "Код",
+									"type": "string",
+									"xpath": "ClinicalDocument/component/structuredBody/component[section/code/@code='BENEFITS']/section/entry[observation/code/@code='6009']/observation/value/@code"
+								},
+								"reference": {
+									"title": "Справочник",
+									"type": "string",
+									"xpath": "ClinicalDocument/component/structuredBody/component[section/code/@code='BENEFITS']/section/entry[observation/code/@code='6009']/observation/value/@codeSystem"
+								},
+								"referenceVersion": {
+									"title": "Версия справочника",
+									"type": "string",
+									"xpath": "ClinicalDocument/component/structuredBody/component[section/code/@code='BENEFITS']/section/entry[observation/code/@code='6009']/observation/value/@codeSystemVersion"
+								}
+							}
+						},
+						"benefitAmount_percentage": {
+							"title": "Размер льготы (в процентах)",
+							"type": "string",
+							"xpath": "ClinicalDocument/component/structuredBody/component[section/code/@code='BENEFITS']/section/entry[observation/code/@code='6010']/observation/value/@value"
+						}
+					}
+				},
+				"recipeDrug": {
+					"title": "Рецепт на препарат/специализированный продукт лечебного питания",
+					"type": "object",
+					"properties": {
+						"totalDurationOfTakingTheDrug": {
+							"title": "Общая длительность приема препарата",
+							"type": "object",
+							"properties": {
+								"value": {
+									"title": "Значение",
+									"type": "numeric",
+									"xpath": "ClinicalDocument/component/structuredBody/component[section/code/@code='RECIPE']/section/entry[substanceAdministration/entryRelationship/observation/code/@code='6011']/substanceAdministration/effectiveTime/width/translation/@value"
+								},
+								"unit": {
+									"title": "Единицы измерения",
+									"type": "object",
+									"properties": {
+										"id": {
+											"title": "Код",
+											"type": "string",
+											"xpath": "ClinicalDocument/component/structuredBody/component[section/code/@code='RECIPE']/section/entry[substanceAdministration/entryRelationship/observation/code/@code='6011']/substanceAdministration/effectiveTime/width/translation/@code"
+										},
+										"reference": {
+											"title": "Справочник",
+											"type": "string",
+											"xpath": "ClinicalDocument/component/structuredBody/component[section/code/@code='RECIPE']/section/entry[substanceAdministration/entryRelationship/observation/code/@code='6011']/substanceAdministration/effectiveTime/width/translation/@codeSystem"
+										},
+										"referenceVersion": {
+											"title": "Версия справочника",
+											"type": "string",
+											"xpath": "ClinicalDocument/component/structuredBody/component[section/code/@code='RECIPE']/section/entry[substanceAdministration/entryRelationship/observation/code/@code='6011']/substanceAdministration/effectiveTime/width/translation/@codeSystemVersion"
+										}
+									}
+								}
+							}
+						},
+						"startDateOfTakingTheDrug": {
+							"title": "Дата начала приема препарата",
+							"type": "string",
+							"xpath": "ClinicalDocument/component/structuredBody/component[section/code/@code='RECIPE']/section/entry[substanceAdministration/entryRelationship/observation/code/@code='6011']/substanceAdministration/effectiveTime/low/@value"
+						},
+						"finishDateOfTakingTheDrug": {
+							"title": "Дата прекращения приема препарата",
+							"type": "string",
+							"xpath": "ClinicalDocument/component/structuredBody/component[section/code/@code='RECIPE']/section/entry[substanceAdministration/entryRelationship/observation/code/@code='6011']/substanceAdministration/effectiveTime/high/@value"
+						},
+						"theRouteOfAdministrationOfTheDrug": {
+							"title": "Путь введения препарата",
+							"type": "object",
+							"properties": {
+								"id": {
+									"title": "Код",
+									"type": "string",
+									"xpath": "ClinicalDocument/component/structuredBody/component[section/code/@code='RECIPE']/section/entry[substanceAdministration/entryRelationship/observation/code/@code='6011']/substanceAdministration/routeCode/@code"
+								},
+								"reference": {
+									"title": "Справочник",
+									"type": "string",
+									"xpath": "ClinicalDocument/component/structuredBody/component[section/code/@code='RECIPE']/section/entry[substanceAdministration/entryRelationship/observation/code/@code='6011']/substanceAdministration/routeCode/@codeSystem"
+								},
+								"referenceVersion": {
+									"title": "Версия справочника",
+									"type": "string",
+									"xpath": "ClinicalDocument/component/structuredBody/component[section/code/@code='RECIPE']/section/entry[substanceAdministration/entryRelationship/observation/code/@code='6011']/substanceAdministration/routeCode/@codeSystemVersion"
+								}
+							}
+						},
+						"prescribedDrugOrSpecializedTherapeuticFood": {
+							"title": "Назначенный препарат/специализированный продукт лечебного питания",
+							"type": "object",
+							"properties": {
+								"code": {
+									"title": "Код",
+									"type": "object",
+									"properties": {
+										"id": {
+											"title": "Код",
+											"type": "string",
+											"xpath": "ClinicalDocument/component/structuredBody/component[section/code/@code='RECIPE']/section/entry[substanceAdministration/entryRelationship/observation/code/@code='6011']/substanceAdministration/consumable/manufacturedProduct/manufacturedMaterial/code/@code"
+										},
+										"reference": {
+											"title": "Справочник",
+											"type": "string",
+											"xpath": "ClinicalDocument/component/structuredBody/component[section/code/@code='RECIPE']/section/entry[substanceAdministration/entryRelationship/observation/code/@code='6011']/substanceAdministration/consumable/manufacturedProduct/manufacturedMaterial/code/@codeSystem"
+										},
+										"referenceVersion": {
+											"title": "Версия справочника",
+											"type": "string",
+											"xpath": "ClinicalDocument/component/structuredBody/component[section/code/@code='RECIPE']/section/entry[substanceAdministration/entryRelationship/observation/code/@code='6011']/substanceAdministration/consumable/manufacturedProduct/manufacturedMaterial/code/@codeSystemVersion"
+										}
+									}
+								},
+								"tradeName": {
+									"title": "Торговое наименование",
+									"type": "string",
+									"xpath": "ClinicalDocument/component/structuredBody/component[section/code/@code='RECIPE']/section/entry[substanceAdministration/entryRelationship/observation/code/@code='6011']/substanceAdministration/consumable/manufacturedProduct/manufacturedMaterial/name/text()"
+								}
+							}
+						},
+						"instructionsForUseOfTheDrug": {
+							"title": "Инструкция по применению препарата",
+							"type": "array",
+							"xpath": "ClinicalDocument/component/structuredBody/component[section/code/@code='RECIPE']/section/entry[substanceAdministration/entryRelationship/observation/code/@code='6011']/substanceAdministration/entryRelationship[substanceAdministration/consumable/manufacturedProduct/manufacturedMaterial/@nullFlavor='NA']",
+							"items": {
+								"type": "object",
+								"properties": {
+									"durationOfTakingTheDrug": {
+										"title": "Длительность приема препарата",
+										"type": "object",
+										"properties": {
+											"value": {
+												"title": "Значение",
+												"type": "numeric",
+												"xpath": "/substanceAdministration/effectiveTime/width/translation/@value"
+											},
+											"unit": {
+												"title": "Единицы измерения",
+												"type": "object",
+												"properties": {
+													"id": {
+														"title": "Код",
+														"type": "string",
+														"xpath": "/substanceAdministration/effectiveTime/width/translation/@code"
+													},
+													"reference": {
+														"title": "Справочник",
+														"type": "string",
+														"xpath": "/substanceAdministration/effectiveTime/width/translation/@codeSystem"
+													},
+													"referenceVersion": {
+														"title": "Версия справочника",
+														"type": "string",
+														"xpath": "/substanceAdministration/effectiveTime/width/translation/@codeSystemVersion"
+													}
+												}
+											}
+										}
+									},
+									"startDateOfTakingTheDrug": {
+										"title": "Дата начала приема препарата",
+										"type": "string",
+										"xpath": "/substanceAdministration/effectiveTime/low/@value"
+									},
+									"finishDateOfTakingTheDrug": {
+										"title": "Дата прекращения приема препарата",
+										"type": "string",
+										"xpath": "/substanceAdministration/effectiveTime/high/@value"
+									},
+									"theFrequencyOfTakingTheDrug": {
+										"title": "Кратность приема препарата",
+										"type": "object",
+										"properties": {
+											"value": {
+												"title": "Значение",
+												"type": "numeric",
+												"xpath": "/substanceAdministration/effectiveTime/period/translation/@value"
+											},
+											"unit": {
+												"title": "Единицы измерения",
+												"type": "object",
+												"properties": {
+													"id": {
+														"title": "Код",
+														"type": "string",
+														"xpath": "/substanceAdministration/effectiveTime/period/translation/@code"
+													},
+													"reference": {
+														"title": "Справочник",
+														"type": "string",
+														"xpath": "/substanceAdministration/effectiveTime/period/translation/@codeSystem"
+													},
+													"referenceVersion": {
+														"title": "Версия справочника",
+														"type": "string",
+														"xpath": "/substanceAdministration/effectiveTime/period/translation/@codeSystemVersion"
+													}
+												}
+											}
+										}
+									},
+									"singleDose": {
+										"title": "Разовая доза",
+										"type": "object",
+										"properties": {
+											"value": {
+												"title": "Значение",
+												"type": "numeric",
+												"xpath": "/substanceAdministration/doseQuantity/translation/@value"
+											},
+											"unit": {
+												"title": "Единицы измерения",
+												"type": "object",
+												"properties": {
+													"id": {
+														"title": "Код",
+														"type": "string",
+														"xpath": "/substanceAdministration/doseQuantity/translation/@code"
+													},
+													"reference": {
+														"title": "Справочник",
+														"type": "string",
+														"xpath": "/substanceAdministration/doseQuantity/translation/@codeSystem"
+													},
+													"referenceVersion": {
+														"title": "Версия справочника",
+														"type": "string",
+														"xpath": "/substanceAdministration/doseQuantity/translation/@codeSystemVersion"
+													}
+												}
+											}
+										}
+									}
+								}
+							}
+						},
+						"numberOfPrescribedDoses": {
+							"title": "Количество назначенных доз",
+							"type": "object",
+							"properties": {
+								"value": {
+									"title": "Значение",
+									"type": "numeric",
+									"xpath": "ClinicalDocument/component/structuredBody/component[section/code/@code='RECIPE']/section/entry[substanceAdministration/entryRelationship/observation/code/@code='6011']/substanceAdministration/entryRelationship[observation/code/@code='6011']/observation/value/translation/@value"
+								},
+								"unit": {
+									"title": "Единицы измерения",
+									"type": "object",
+									"properties": {
+										"id": {
+											"title": "Код",
+											"type": "string",
+											"xpath": "ClinicalDocument/component/structuredBody/component[section/code/@code='RECIPE']/section/entry[substanceAdministration/entryRelationship/observation/code/@code='6011']/substanceAdministration/entryRelationship[observation/code/@code='6011']/observation/value/translation/@code"
+										},
+										"reference": {
+											"title": "Справочник",
+											"type": "string",
+											"xpath": "ClinicalDocument/component/structuredBody/component[section/code/@code='RECIPE']/section/entry[substanceAdministration/entryRelationship/observation/code/@code='6011']/substanceAdministration/entryRelationship[observation/code/@code='6011']/observation/value/translation/@codeSystem"
+										},
+										"referenceVersion": {
+											"title": "Версия справочника",
+											"type": "string",
+											"xpath": "ClinicalDocument/component/structuredBody/component[section/code/@code='RECIPE']/section/entry[substanceAdministration/entryRelationship/observation/code/@code='6011']/substanceAdministration/entryRelationship[observation/code/@code='6011']/observation/value/translation/@codeSystemVersion"
+										}
+									}
+								}
+							}
+						},
+						"specialInstructions": {
+							"title": "Особые указания",
+							"type": "array",
+							"xpath": "ClinicalDocument/component/structuredBody/component[section/code/@code='RECIPE']/section/entry[substanceAdministration/entryRelationship/observation/code/@code='6011']/substanceAdministration/precondition",
+							"items": {
+								"type": "string",
+								"xpath": "/criterion/value/text()"
+							}
+						}
+					}
+				},
+				"prescriptionForAMedicalDevice": {
+					"title": "Рецепт на медицинское изделие",
+					"type": "object",
+					"properties": {
+						"recipeText": {
+							"title": "Текст рецепта",
+							"type": "string",
+							"xpath": "ClinicalDocument/component/structuredBody/component[section/code/@code='RECIPE']/section/entry[substanceAdministration/entryRelationship/observation/code/@code='6011']/supply/text/text()"
+						},
+						"quantity": {
+							"title": "Количество",
+							"type": "object",
+							"properties": {
+								"value": {
+									"title": "Значение",
+									"type": "numeric",
+									"xpath": "ClinicalDocument/component/structuredBody/component[section/code/@code='RECIPE']/section/entry[substanceAdministration/entryRelationship/observation/code/@code='6011']/supply/quantity/translation/@value"
+								},
+								"unit": {
+									"title": "Единицы измерения",
+									"type": "object",
+									"properties": {
+										"id": {
+											"title": "Код",
+											"type": "string",
+											"xpath": "ClinicalDocument/component/structuredBody/component[section/code/@code='RECIPE']/section/entry[substanceAdministration/entryRelationship/observation/code/@code='6011']/supply/quantity/translation/@code"
+										},
+										"reference": {
+											"title": "Справочник",
+											"type": "string",
+											"xpath": "ClinicalDocument/component/structuredBody/component[section/code/@code='RECIPE']/section/entry[substanceAdministration/entryRelationship/observation/code/@code='6011']/supply/quantity/translation/@codeSystem"
+										},
+										"referenceVersion": {
+											"title": "Версия справочника",
+											"type": "string",
+											"xpath": "ClinicalDocument/component/structuredBody/component[section/code/@code='RECIPE']/section/entry[substanceAdministration/entryRelationship/observation/code/@code='6011']/supply/quantity/translation/@codeSystemVersion"
+										}
+									}
+								}
+							}
+						},
+						"medicalDevice": {
+							"title": "Медицинское изделие",
+							"type": "object",
+							"properties": {
+								"code": {
+									"title": "Код",
+									"type": "object",
+									"properties": {
+										"id": {
+											"title": "Код",
+											"type": "string",
+											"xpath": "ClinicalDocument/component/structuredBody/component[section/code/@code='RECIPE']/section/entry[substanceAdministration/entryRelationship/observation/code/@code='6011']/supply/product/manufacturedProduct/manufacturedMaterial/code/@code"
+										},
+										"reference": {
+											"title": "Справочник",
+											"type": "string",
+											"xpath": "ClinicalDocument/component/structuredBody/component[section/code/@code='RECIPE']/section/entry[substanceAdministration/entryRelationship/observation/code/@code='6011']/supply/product/manufacturedProduct/manufacturedMaterial/code/@codeSystem"
+										},
+										"referenceVersion": {
+											"title": "Версия справочника",
+											"type": "string",
+											"xpath": "ClinicalDocument/component/structuredBody/component[section/code/@code='RECIPE']/section/entry[substanceAdministration/entryRelationship/observation/code/@code='6011']/supply/product/manufacturedProduct/manufacturedMaterial/code/@codeSystemVersion"
+										}
+									}
+								},
+								"nameOfTheMedicalDevice": {
+									"title": "Наименование медицинского изделия",
+									"type": "string",
+									"xpath": "ClinicalDocument/component/structuredBody/component[section/code/@code='RECIPE']/section/entry[substanceAdministration/entryRelationship/observation/code/@code='6011']/supply/product/manufacturedProduct/manufacturedMaterial/name/text()"
+								}
+							}
+						}
+					}
+				}
+			}
+		},
+		"informationAboutTheLinkedDocument": {
+			"title": "Сведения о связанном документе",
+			"type": "array",
+			"xpath": "ClinicalDocument/component/structuredBody/component[section/code/@code='LINKDOCS']/section/entry[act/code/@codeSystem='1.2.643.5.1.13.13.11.1522']/act[code/@codeSystem='1.2.643.5.1.13.13.11.1522']",
+			"items": {
+				"type": "object",
+				"properties": {
+					"typeOfDocument": {
+						"title": "Вид документа",
+						"type": "object",
+						"properties": {
+							"id": {
+								"title": "Код",
+								"type": "string",
+								"xpath": "/code/@code"
+							},
+							"reference": {
+								"title": "Справочник",
+								"type": "string",
+								"xpath": "/code/@codeSystem"
+							},
+							"referenceVersion": {
+								"title": "Версия справочника",
+								"type": "string",
+								"xpath": "/code/@codeSystemVersion"
+							}
+						}
+					},
+					"noteToTheDocument": {
+						"title": "Примечание к документу",
+						"type": "string",
+						"xpath": "/text/text()"
+					},
+					"dateOfIssueOfTheDocument": {
+						"title": "Дата выдачи документа",
+						"type": "string",
+						"xpath": "/effectiveTime/@value"
+					},
+					"documentSeries": {
+						"title": "Серия документа",
+						"type": "string",
+						"xpath": "/entryRelationship[observation/code/@code='11002']/observation/value/text()"
+					},
+					"documentNumber": {
+						"title": "Номер документа",
+						"type": "string",
+						"xpath": "/entryRelationship[observation/code/@code='11003']/observation/value/text()"
+					},
+					"documentForm": {
+						"title": "Форма документа",
+						"type": "object",
+						"properties": {
+							"id": {
+								"title": "Код",
+								"type": "string",
+								"xpath": "/entryRelationship[observation/code/@code='6058']/observation/value/@code"
+							},
+							"reference": {
+								"title": "Справочник",
+								"type": "string",
+								"xpath": "/entryRelationship[observation/code/@code='6058']/observation/value/@codeSystem"
+							},
+							"referenceVersion": {
+								"title": "Версия справочника",
+								"type": "string",
+								"xpath": "/entryRelationship[observation/code/@code='6058']/observation/value/@codeSystemVersion"
+							}
+						}
+					},
+					"linkToAnExternalDocument": {
+						"title": "Ссылка на внешний документ",
+						"type": "object",
+						"properties": {
+							"misID": {
+								"title": "Уникальный идентификатор документа в МИС",
+								"type": "object",
+								"properties": {
+									"root": {
+										"title": "root",
+										"type": "string",
+										"xpath": "/reference/externalDocument/id[1]/@root"
+									},
+									"extension": {
+										"title": "extension",
+										"type": "string",
+										"xpath": "/reference/externalDocument/id[1]/@extension"
+									}
+								}
+							},
+							"emdrID": {
+								"title": "Уникальный идентификатор документа в РЭМД",
+								"type": "object",
+								"properties": {
+									"root": {
+										"title": "root",
+										"type": "string",
+										"xpath": "/reference/externalDocument/id[2]/@root"
+									},
+									"extension": {
+										"title": "extension",
+										"type": "string",
+										"xpath": "/reference/externalDocument/id[2]/@extension"
+									}
+								}
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+}
